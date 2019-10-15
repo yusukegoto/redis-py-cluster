@@ -287,7 +287,7 @@ def test_cluster_slots_error():
         with pytest.raises(RedisClusterException) as e:
             n.initialize()
 
-        assert "ERROR sending 'cluster slots' command" in unicode(e)
+        assert "ERROR sending 'cluster slots' command" in unicode(e.value)
 
 
 def test_cluster_slots_error_expected_responseerror():
@@ -303,7 +303,7 @@ def test_cluster_slots_error_expected_responseerror():
         with pytest.raises(RedisClusterException) as e:
             n.initialize()
 
-        assert 'Redis Cluster cannot be connected' in unicode(e)
+        assert 'Redis Cluster cannot be connected' in unicode(e.value)
 
 
 def test_set_node():
